@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>MySQL Wizard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="http://localhost/Thesis/Application/Public/Styles/main.css">
+    </head>
+    <body>
+        <form action="/Thesis/Generate" method="GET"/>
+            Select query: 
+            <select name="Query">
+                <option value="Create">CREATE</option>
+                <option value="Update">UPDATE</option>
+                <option value="Drop">DROP</option>
+                <option value="Select">SELECT</option>
+            </select>
+            <br>
+            Number of rows: <input type="text" name="Rows" id="rows"/>
+            <br>
+            <input type="submit" name="Submit" value="Generate"/>
+        </form>
+

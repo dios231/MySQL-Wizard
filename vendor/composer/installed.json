@@ -1,0 +1,91 @@
+[
+    {
+        "name": "fracture/http",
+        "version": "0.4.2",
+        "version_normalized": "0.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fracture/http.git",
+            "reference": "c9166c48355d9ba65f8b5adb397e188b726ec627"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fracture/http/zipball/c9166c48355d9ba65f8b5adb397e188b726ec627",
+            "reference": "c9166c48355d9ba65f8b5adb397e188b726ec627",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "satooshi/php-coveralls": "0.7.*@dev",
+            "sebastianbergmann/phpcov": "1.1.0"
+        },
+        "time": "2016-03-10 22:04:20",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD"
+        ],
+        "authors": [
+            {
+                "name": "Mārtiņš Tereško",
+                "email": "martins.teresko@gmail.com",
+                "role": "Creator / Lead Developer"
+            }
+        ],
+        "description": "HTTP abstraction library, extracted dependency of fracture/router.",
+        "homepage": "https://github.com/fracture/http"
+    },
+    {
+        "name": "fracture/routing",
+        "version": "0.3.1",
+        "version_normalized": "0.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fracture/routing.git",
+            "reference": "c6cb29a166bbce98f39de76477b50cc78b3dc35e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fracture/routing/zipball/c6cb29a166bbce98f39de76477b50cc78b3dc35e",
+            "reference": "c6cb29a166bbce98f39de76477b50cc78b3dc35e",
+            "shasum": ""
+        },
+        "require": {
+            "fracture/http": ">=0.3.0",
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "satooshi/php-coveralls": "dev-master",
+            "sebastianbergmann/phpcov": "1.1.0"
+        },
+        "time": "2016-02-15 03:53:58",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD"
+        ],
+        "authors": [
+            {
+                "name": "Mārtiņš Tereško",
+                "email": "martins.teresko@gmail.com",
+                "role": "Creator / Lead Developer"
+            }
+        ],
+        "description": "Simple routing library without dispatcher",
+        "homepage": "https://github.com/fracture/routing"
+    }
+]
