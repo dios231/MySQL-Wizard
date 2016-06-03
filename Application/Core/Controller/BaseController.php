@@ -3,12 +3,12 @@ namespace Application\Core\Controller;
 
 class BaseController{
     //Create instance.
-    protected $factory;
+    protected $serviceFactory;
     //Associated View instance.
     protected $view;
     
     public function __construct($factory, $view){
-        $this->factory = $factory;
+        $this->serviceFactory = $factory;
         $this->view = $view;
     }
 }

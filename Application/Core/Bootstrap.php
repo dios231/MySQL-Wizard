@@ -27,19 +27,16 @@ $request->setUri($uri);
 
 $configuration = [
     'primary' => [
-        'notation' => ':resource',
-        'defaults' => [
-            'resource' => 'vgf',
-        ],
+        'notation' => ':resource/:command',
     ],
-    'fallback' => [
-        'notation' => ':any',
+    'index' => [
+        'notation' => ':resource',
         'conditions' => [
-            'any' => '.*',
+            'resource' => '()'
         ],
         'defaults' => [
             'resource' => 'Home',
-            'command' => 'index',
+            'command' => 'index'
         ],
     ],
 ];
@@ -57,22 +54,23 @@ $router->route($request);
 
 
 
-
-use Application\Core\Model\Factories\QueryFactory;
+var_dump($request->getParameter('resource'));
+use Application\Core\Model\Factories\ServiceFactory;
 use Application\Core\Routing\Router;
 use Application\Core\View\Home;
 
-$factory = new QueryFactory();
-var_dump($request->getParameter('resource'));
-var_dump($request->getParameter('Query'));
-var_dump($request->getParameter('Rows'));
+$ServiceFactory = new ServiceFactory();
 
 $class = 'Application\\Core\\View\\' . $request->getParameter('resource');
-$view = new $class();
+$view = new $class($request);
 
 //Create the controller class.
 $class = 'Application\\Core\\Controller\\' . $request->getParameter('resource');
-$controller = new $class($factory, $view);
+$controller = new $class($ServiceFactory, $view);
+
+//Execute the nessecary controller's method.
+$command=$request->getParameter('command');
+$controller->$command($request);
 
 //Generate the response.
 $view->render($request);

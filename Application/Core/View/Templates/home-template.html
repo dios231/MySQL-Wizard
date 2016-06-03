@@ -12,7 +12,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="http://localhost/Thesis/Application/Public/Styles/main.css">
     </head>
     <body>
-        <form action="/Thesis/Generate" method="GET"/>
+        <form action="" method="GET"/>
             Select query: 
             <select name="Query">
                 <option value="Create">CREATE</option>
@@ -22,6 +22,8 @@ and open the template in the editor.
             </select>
             <br>
             Number of rows: <input type="text" name="Rows" id="rows"/>
+            <br>
+            Table name: <input type="text" name="Table"/>
             <br>
             <input type="submit" name="Submit" value="Generate"/>
         </form>

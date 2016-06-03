@@ -1,14 +1,14 @@
 <?php
-namespace Application\Core\Model;
+namespace Application\Core\Model\Domain;
 
 
 class Create {
     //Query string;
-    protected $qString = 'CREATE TABLE ';
+    protected $queryString;
     
     //Table name.
     protected $name;
-    
+    protected $numOfRows;
     //An array of query attributes.
     protected $attributes;
     
@@ -26,28 +26,28 @@ class Create {
 
     public function getQuery(){
         $this->queryGenerate();
-        return $this->qString;
+        return $this->queryString;
     }
 
     protected function queryGenerate(){
         //Add the table name.
-        $this->qString .= $this->name;
+        $this->queryString .= $this->name;
         //Add a new operand
         $this->addOperand('(');
         $numOfAttribues = count($this->attributes);
         for ($i=1; $i<=$numOfAttribues; $i++){
             $current_cell = 'cell' . $i;
-            $this->qString .= $this->attributes[$current_cell][0];
+            $this->queryString .= $this->attributes[$current_cell][0];
             $this->addOperand(' ');
-            $this->qString .= $this->attributes[$current_cell][1];
+            $this->queryString .= $this->attributes[$current_cell][1];
             $this->addOperand(' ');
-            FALSE !== array_search('AUTO_INCREMET', $this->attributes[$current_cell]) ?  $this->qString .= ' AUTO_INCREMENT' : '';
-            FALSE !== array_search('NOT_NULL', $this->attributes[$current_cell]) ?  $this->qString .= ' NOT_NULL ' : '';
-            FALSE !== array_search('PRIMARY_KEY', $this->attributes[$current_cell]) ?  $this->qString .= ' PRIMARY_KEY' : '';
+            FALSE !== array_search('AUTO_INCREMET', $this->attributes[$current_cell]) ?  $this->queryString .= ' AUTO_INCREMENT' : '';
+            FALSE !== array_search('NOT_NULL', $this->attributes[$current_cell]) ?  $this->queryString .= ' NOT_NULL ' : '';
+            FALSE !== array_search('PRIMARY_KEY', $this->attributes[$current_cell]) ?  $this->queryString .= ' PRIMARY_KEY' : '';
             $i == $numOfAttribues ? '' : $this->addOperand(',');
         }
         //The end of the query.
-        $this->qString .= ');';
+        $this->queryString .= ');';
     }
     
     /**
@@ -55,7 +55,7 @@ class Create {
      * @param type $operand an operand like ( - ) - , 
      */
     protected function addOperand($operand){
-        $this->qString .= $operand;
+        $this->queryString .= $operand;
     }
 }
 

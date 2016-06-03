@@ -1,16 +1,39 @@
 <?php
 namespace Application\Core\View;
+
 /**
  * Home page view.
  */
 class Home{
-    //Number of rows.
-    protected $rows;
-    //Create instance.
-    protected $create;
+    protected $haveGetData;
+    protected $query;
     
     public function render($request){
-        //Rende the main page.
+        if ($this->haveGetData){
+            $this->doTheRedirection($this->makeTheRedirectQuery());
+        }
+        else{
+            $this->rendeTheMainPage();
+        }
+    }
+    
+    public function haveGetData($condition){
+        $this->haveGetData = $condition;
+    }
+    
+    public function setQuery($query){
+        $this->query = $query;
+    }
+    
+    protected function makeTheRedirectQuery(){
+        return 'Location: /Thesis/Generate/'  . $this->query;
+    }
+    
+    protected function doTheRedirection($url){
+        header($url);
+    }
+    
+    protected function rendeTheMainPage(){
         include 'Templates/home-template.html';
     }
 }
