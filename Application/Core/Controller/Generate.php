@@ -13,7 +13,6 @@ class Generate extends BaseController{
     }
     
     protected function alterView($request) {
-        echo "dfdf";
         echo $request->getParameter('Rows');
         $this->view->setNumberOfRows = $request->getParameter('Rows');
     }
