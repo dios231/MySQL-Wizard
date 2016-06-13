@@ -61,8 +61,9 @@ use Application\Core\View\Home;
 
 $ServiceFactory = new ServiceFactory();
 
+//create the view class.
 $class = 'Application\\Core\\View\\' . $request->getParameter('resource');
-$view = new $class($request);
+$view = new $class($ServiceFactory);
 
 //Create the controller class.
 $class = 'Application\\Core\\Controller\\' . $request->getParameter('resource');
@@ -73,5 +74,5 @@ $command=$request->getParameter('command');
 $controller->$command($request);
 
 //Generate the response.
-$view->render($request);
+$view->render();
 ?>
